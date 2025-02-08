@@ -1,0 +1,149 @@
+@font-face {
+    font-family: 'Soria';
+    src: url('../fonts/soria-font.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Soria', sans-serif;  
+}
+
+body {
+    background-image: url('../gif/GIF\ by\ Mediamodifier.gif');
+}
+
+.navbar {
+    font-size: 1.4em;
+}
+
+.navbar .navbar-brand {
+    font-size: 1.2em;
+}
+
+.navbar-nav .nav-link i {
+    color: rgb(53, 112, 212);
+}
+
+.container {
+    background-color: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    width: 80%;
+    max-width: 1000px;
+}
+
+h1 {
+    text-align: center;
+    margin-bottom: 20px;
+    color: #333;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 10px;
+    margin-bottom: 20px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.region {
+    margin-bottom: 30px;
+}
+
+.countries {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.country {
+    width: 150px;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    text-align: center;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+}
+
+.country img {
+    max-width: 100px;
+    border-radius: 5px;
+}
+
+.country p {
+    margin-top: 10px;
+    font-size: 14px;
+}
+
+.country a {
+    text-decoration: none;
+    color: inherit;
+}
+
+.country:hover {
+    transform: scale(1.1);
+    cursor: pointer;
+    opacity: 0.8;
+}
+
+.africa h2 {
+    background-color: #f4c542;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.europe h2 {
+    background-color: #85c1e9;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.asia h2 {
+    background-color: #f4a1a1;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.americas h2 {
+    background-color: #75e0a5;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+
+.oceania h2 {
+    background-color: #9dd3f8;
+    color: white;
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+}
+.antarctic h2{
+    background-color: #75e0a5;
+    color: rgb(255, 255, 255);
+    padding: 10px;
+    border-radius: 5px;
+    text-align: center;
+    background-color: #d8d8d8; 
+}
+footer {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 40px;
+}
+
+footer p {
+    text-align: center; 
+}

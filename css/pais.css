@@ -1,0 +1,106 @@
+@font-face {
+    font-family: 'Soria';
+    src: url('../fonts/soria-font.ttf') format('truetype');  /* Verifica la ruta de la fuente */
+    font-weight: normal;
+    font-style: normal;
+}
+
+
+*{
+    font-family: 'Soria', sans-serif;  /* Añadir una fuente secundaria */
+}
+.navbar{
+    font-size: 1.4em;
+}
+.navbar .navbar-brand{
+    font-size: 1.2em;
+
+}
+.navbar-nav .nav-link i {
+    color: rgb(53, 112, 212);
+}
+
+html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+    background-image: url('../gif/GIF\ by\ Mediamodifier.gif');
+}
+
+#country-details {
+    position: relative;
+    height: 100%; /* Asegura que ocupe toda la altura */
+    background-size: cover; /* Para cubrir todo el fondo */
+    background-position: center; /* Para centrar la bandera */
+    background-attachment: fixed; /* Para fijar la bandera mientras se hace scroll */
+}
+
+/* Superposición para mejorar la legibilidad */
+#country-details::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(0, 0, 0, 0.5); /* Superposición oscura */
+    z-index: 1;
+}
+
+.country-info {
+    position: relative;
+    z-index: 2;
+    color: white;
+    background: rgba(0, 0, 0, 0.6); /* Fondo oscuro para el texto */
+    padding: 20px;
+    border-radius: 10px;
+    margin-top: 20px;
+}
+
+.country-info h2 {
+    font-size: 2em;
+    margin-bottom: 20px;
+}
+
+.country-info p {
+    font-size: 1.2em;
+    margin: 10px 0;
+}
+footer {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 40px;
+}
+
+footer p {
+    text-align: center; 
+}
+
+
+@media (max-width: 768px) {
+    h1 {
+        font-size: 1.5rem;
+    }
+
+    .country-info {
+        flex-direction: column; 
+        align-items: center;
+    }
+
+    .country-text {
+        max-width: 100%;
+    }
+
+    .country-info img {
+        max-width: 100%; 
+        
+    }
+}
+
+
+@media (max-width: 480px) {
+    .country-text {
+        padding: 15px; 
+    }
+}

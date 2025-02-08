@@ -1,0 +1,80 @@
+@font-face {
+    font-family: 'Soria';
+    src: url('../fonts/soria-font.ttf') format('truetype'); 
+    font-weight: normal;
+    font-style: normal;
+}
+
+* {
+    font-family: 'Soria', sans-serif;
+}
+
+.navbar {
+    font-size: 1.4em;
+}
+
+.navbar .navbar-brand {
+    font-size: 1.2em;
+}
+
+.navbar-nav .nav-link i {
+    color: rgb(53, 112, 212);
+}
+
+body {
+    background-color: #f0f0f0;
+    background-image: url('../gif/GIF\ by\ Mediamodifier.gif');
+}
+
+.container {
+    width: 90%;
+    max-width: 1200px;
+    margin-top: 80px;
+}
+
+h1 {
+    font-size: 2em;
+    margin-bottom: 20px;
+    text-align: center;
+}
+
+.list-group-item {
+    background-color: #fff;
+    border: 1px solid #ddd;
+    padding: 10px;
+    margin: 5px 0;
+    font-size: 1.2em;
+}
+
+.list-group-item {
+    cursor: pointer; 
+    background-color: #f8f9fa;
+    transition: transform 0.3s ease, box-shadow 0.3s ease, background-color 0.3s ease;
+    border-radius: 8px;
+    padding: 10px 15px;
+}
+
+
+.list-group-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); 
+    background-color: #d9fcff; 
+    color: #000000;
+}
+
+.list-group-item:active {
+    transform: scale(1.03); 
+    background-color: #d1d8e0;
+}
+
+footer {
+    display: flex; 
+    justify-content: center; 
+    align-items: center; 
+    padding: 40px;
+}
+
+footer p {
+    text-align: center; 
+}
+
