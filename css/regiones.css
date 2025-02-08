@@ -108,22 +108,3 @@ h1 {
     color: #2c3e50;
 }
 
-footer {
-    display: flex; 
-    justify-content: center; 
-    align-items: center; 
-    padding: 80px;
-   
-}
-
-footer p {
-    text-align: center; 
-    top: 100%;
-}
-
-@media (max-width: 768px) {
-    footer {
-        padding: 15px 0;
-        font-size: 12px;
-    }
-}
