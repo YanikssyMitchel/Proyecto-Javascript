@@ -8,22 +8,18 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     function fetchCountryDetails(countryName) {
-        // Verificar si los datos están en localStorage
-        const storedRegions = localStorage.getItem('regions');
-        if (!storedRegions) {
-            console.error('No regiones encontrados en el localStorage.');
+        // Verificar si los datos de los países están en localStorage
+        const storedCountries = localStorage.getItem('countries');
+        if (!storedCountries) {
+            console.error('No se encontraron países en el localStorage.');
             return;
         }
 
-        // Parsear las regiones almacenadas
-        const regions = JSON.parse(storedRegions);
+        // Parsear los países almacenados
+        const countries = JSON.parse(storedCountries);
 
-        // Buscar el país en las regiones almacenadas
-        let country = null;
-        for (const region in regions) {
-            country = regions[region].find(c => c.name.common.toLowerCase() === countryName.toLowerCase());
-            if (country) break;
-        }
+        // Buscar el país directamente en los países almacenados
+        const country = countries.find(c => c.name.common.toLowerCase() === countryName.toLowerCase());
 
         if (country) {
             renderCountryDetails(country);
@@ -36,7 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const container = document.getElementById('country-details');
 
         // Crear un fondo con la bandera
-        container.style.backgroundImage = `url(${country.flags.svg})`;  
+        container.style.backgroundImage = `url(${country.flags.svg})`;  // Usamos 'flags' en lugar de 'banderas'
         container.style.backgroundSize = 'cover';
         container.style.backgroundPosition = 'center';
         container.style.backgroundAttachment = 'fixed';
@@ -51,7 +47,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 <p><strong>Población:</strong> ${country.population}</p>
                 <p><strong>Área:</strong> ${country.area} km²</p>
                 <p><strong>Idioma(s):</strong> ${country.languages ? Object.values(country.languages).join(', ') : 'No disponible'}</p>
-                <p><strong>Moneda:</strong>${country.currencies ? Object.values(country.currencies).map(currency => currency.name).join(', ') : 'No disponible' }</p>
+                <p><strong>Moneda:</strong> ${country.currencies ? Object.values(country.currencies).map(currency => currency.name).join(', ') : 'No disponible'}</p>
             </div>
         `;
 

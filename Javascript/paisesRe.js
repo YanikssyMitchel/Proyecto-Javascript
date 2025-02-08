@@ -29,8 +29,8 @@ function obtenerPaisesDeRegion(region) {
             // Mostrar todos los países inicialmente
             paisesDeRegion.forEach(pais => {
                 const paisHTML = `
-                   <a href="pais.html?country=${encodeURIComponent(pais.name.common)}" class="list-group-item list-group-item-action">
-                    ${pais.name.common}
+                   <a href="pais.html?country=${encodeURIComponent(pais.nombre.common)}" class="list-group-item list-group-item-action">
+                    ${pais.nombre.common}
                     </a>
                 `;
                 contenedorPaises.innerHTML += paisHTML;
@@ -55,7 +55,7 @@ function agregarFiltroBusqueda(paisesDeRegion) {
         
         // Filtrar los países por el nombre
         const filteredCountries = paisesDeRegion.filter(pais =>
-            pais.name.common.toLowerCase().includes(query)
+            pais.nombre.common.toLowerCase().includes(query)
         );
 
         // Actualizar el contenedor con los países filtrados
@@ -71,8 +71,8 @@ function mostrarPaisesFiltrados(paises) {
     if (paises.length > 0) {
         paises.forEach(pais => {
             const paisHTML = `
-            <a href="pais.html?country=${encodeURIComponent(pais.name.common)}" class="list-group-item list-group-item-action">
-                ${pais.name.common}
+            <a href="pais.html?country=${encodeURIComponent(pais.nombre.common)}" class="list-group-item list-group-item-action">
+                ${pais.nombre.common}
             </a>
         `;
             contenedorPaises.innerHTML += paisHTML;
