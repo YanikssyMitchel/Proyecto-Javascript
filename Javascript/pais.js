@@ -1,44 +1,48 @@
 document.addEventListener("DOMContentLoaded", () => {
-    // Obtener el nombre del país desde la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const countryName = urlParams.get('country');
+    
+    const urlParams = new URLSearchParams(window.location.search);//Esta línea nos permite obtener los parámetros que vienen con la URL. 
+    const countryName = urlParams.get('country');//De la URL obtenemos el valor del parámetro country. 
 
     if (countryName) {
-        fetchCountryDetails(countryName);
+        fetchCountryDetails(countryName);//Si realmente encontramos un valor para country en la URL, 
+
+        // llamamos a la función fetchCountryDetails y le pasamos ese nombre de país 
     }
 
     function fetchCountryDetails(countryName) {
-        // Verificar si los datos de los países están en localStorage
-        const storedCountries = localStorage.getItem('countries');
+        
+        const storedCountries = localStorage.getItem('countries');//Buscamos informacion en el local Storage
         if (!storedCountries) {
-            console.error('No se encontraron países en el localStorage.');
+            console.error('No se encontraron países en el localStorage.');//Si no hay se muestra un mensaje 
             return;
         }
 
-        // Parsear los países almacenados
-        const countries = JSON.parse(storedCountries);
+       
+        const countries = JSON.parse(storedCountries);//Si hay paises los convertimos en un array de países
 
-        // Buscar el país directamente en los países almacenados
-        const country = countries.find(c => c.name.common.toLowerCase() === countryName.toLowerCase());
+      
+        const country = countries.find(c => c.name.common.toLowerCase() === countryName.toLowerCase());//Comparamos el nombre del país (c.name.common) 
+        // con el valor que obtuvimos de la URL (countryName)
+        // Usamos toLowerCase() para asegurarnos de que la comparación no dependa de mayúsculas o minúsculas.
 
-        if (country) {
+        if (country) {//Si encontramos el pais llamamos la funcion renderCountryDetails(country);
             renderCountryDetails(country);
         } else {
-            console.error(`Pais ${countryName} no encontrado en el localStorage.`);
+            console.error(`Pais ${countryName} no encontrado en el localStorage.`);//Si no se encontra mandamos error
         }
     }
 
     function renderCountryDetails(country) {
-        const container = document.getElementById('country-details');
+        const container = document.getElementById('country-details');//Buscamos en el html el div
+        //  donde ponemos la informacion
 
-        // Crear un fondo con la bandera
-        container.style.backgroundImage = `url(${country.flags.svg})`;  // Usamos 'flags' en lugar de 'banderas'
+        container.style.backgroundImage = `url(${country.flags.svg})`; //Ponemos la bandera de fondo
         container.style.backgroundSize = 'cover';
-        container.style.backgroundPosition = 'center';
+        container.style.backgroundPosition = 'center';//Lo centramos
         container.style.backgroundAttachment = 'fixed';
-        container.style.color = '#fff'; // Para que el texto sea blanco y resalte
+        container.style.color = '#fff'; //Ponemos el color del texto blanco
 
-        // Crear el contenido del país
+      //Creamos un div donde se vera la informacion del pais
         const countryInfo = `
             <div class="country-info">
                 <h2>${country.name.common}</h2>
@@ -51,6 +55,6 @@ document.addEventListener("DOMContentLoaded", () => {
             </div>
         `;
 
-        container.innerHTML = countryInfo;
+        container.innerHTML = countryInfo;//Ponemos el contenido que creamos (los detalles del país) dentro del contenedor de la página para que se vea.
     }
 });

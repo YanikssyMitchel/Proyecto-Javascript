@@ -1,83 +1,89 @@
-document.addEventListener("DOMContentLoaded", () => {
-    // Obtener la región desde la URL
-    const urlParams = new URLSearchParams(window.location.search);
-    const regionSeleccionada = urlParams.get('regions');
+document.addEventListener("DOMContentLoaded", () => {//Cuando se cargue el documento
+   
+    const urlParams = new URLSearchParams(window.location.search);//Obtiene la URL
 
-    if (regionSeleccionada) {
+    const regionSeleccionada = urlParams.get('regions');//obtenemos el valor del parámetro regions de la URL. 
+
+    if (regionSeleccionada) {//Si esta la region seleccionada
         document.getElementById('region-name').textContent = `Países en la región de ${regionSeleccionada}`;
+        //en el html mostrara Paises de la region y el nombre de la region
 
-        // Llamar a la función para obtener y mostrar los países de esa región
-        obtenerPaisesDeRegion(regionSeleccionada);
-    } else {
-        document.getElementById('region-name').textContent = 'No se especificó ninguna región.';
+        obtenerPaisesDeRegion(regionSeleccionada);//Se llama obtener paises de la region
+
+    } else {//Si no
+        document.getElementById('region-name').textContent = 'No se especificó ninguna región.';//dice que no se especifico
     }
 });
 
-// Función para obtener los países de una región desde el localStorage
-function obtenerPaisesDeRegion(region) {
-    const regionesGuardadas = localStorage.getItem('regions');
-    const contenedorPaises = document.getElementById('countries-container');
+
+function obtenerPaisesDeRegion(region) {//Se manda la region
+
+    const regionesGuardadas = localStorage.getItem('regions');//Se llama las regiones del localstorage
+    const contenedorPaises = document.getElementById('countries-container');//Se busca el id
     
-    if (regionesGuardadas) {
-        const regiones = JSON.parse(regionesGuardadas);
-        const paisesDeRegion = regiones[region];
+    if (regionesGuardadas) {//Si está la region
 
-        // Limpiar el contenedor antes de mostrar los países
-        contenedorPaises.innerHTML = '';
+        const regiones = JSON.parse(regionesGuardadas);//Lo convertimos en Json
 
-        if (paisesDeRegion && paisesDeRegion.length > 0) {
-            // Mostrar todos los países inicialmente
-            paisesDeRegion.forEach(pais => {
+        const paisesDeRegion = regiones[region];//Llamamos los paises de esa region
+
+       
+        contenedorPaises.innerHTML = '';//se limpia el contenido
+
+        if (paisesDeRegion && paisesDeRegion.length > 0) {//Si los paises de la region son mayores a la cantidad de paises
+        
+            paisesDeRegion.forEach(pais => {//Se recorre con un foreach los paises de esa region 
                 const paisHTML = `
-                   <a href="pais.html?country=${encodeURIComponent(pais.nombre.common)}" class="list-group-item list-group-item-action">
-                    ${pais.nombre.common}
+                   <a href="pais.html?country=${encodeURIComponent(pais.name.common)}" class="list-group-item list-group-item-action">
+                    ${pais.name.common}
                     </a>
-                `;
-                contenedorPaises.innerHTML += paisHTML;
+                `;//Creamos una cadena de texto con un A que nos envia a pais.html con el nombre del pais que seleccionamos
+
+                contenedorPaises.innerHTML += paisHTML;//Agregamos paisHTML al contenedor
             });
 
-            // Agregar el filtro de búsqueda
-            agregarFiltroBusqueda(paisesDeRegion);
+           
+            agregarFiltroBusqueda(paisesDeRegion);//LLamamos la funcion con los paises de la region
         } else {
-            contenedorPaises.innerHTML = '<p>No se encontraron países en esta región.</p>';
+            contenedorPaises.innerHTML = '<p>No se encontraron países en esta región.</p>';//Si no se dice que no se encontaron
         }
     } else {
         contenedorPaises.innerHTML = '<p>No se encontraron datos de regiones en el almacenamiento local.</p>';
     }
 }
 
-// Función para agregar el evento de búsqueda
 function agregarFiltroBusqueda(paisesDeRegion) {
-    const searchInput = document.getElementById('country-search'); // Asegúrate de tener el input con id "country-search"
+    const searchInput = document.getElementById('country-search');//Se llama el input
     
-    searchInput.addEventListener('input', () => {
-        const query = searchInput.value.toLowerCase();
+    searchInput.addEventListener('input', () => {//cada vez que escribimos
+        const query = searchInput.value.toLowerCase();//Pasa lo que escribimos a minuscula
         
-        // Filtrar los países por el nombre
-        const filteredCountries = paisesDeRegion.filter(pais =>
-            pais.nombre.common.toLowerCase().includes(query)
+        const filteredCountries = paisesDeRegion.filter(pais =>//se filtran los paises segun lo que se escriba
+
+            pais.name.common.toLowerCase().includes(query)//Si el nombre del pais incluye lo que se escribio se deja ahi
         );
 
-        // Actualizar el contenedor con los países filtrados
-        mostrarPaisesFiltrados(filteredCountries);
+        
+        mostrarPaisesFiltrados(filteredCountries);//Se llama la funcion mostrar paises
     });
 }
 
-// Función para mostrar los países filtrados
-function mostrarPaisesFiltrados(paises) {
-    const contenedorPaises = document.getElementById('countries-container');
-    contenedorPaises.innerHTML = ''; // Limpiar contenedor
 
-    if (paises.length > 0) {
-        paises.forEach(pais => {
+function mostrarPaisesFiltrados(paises) {//Se muestran los paises filtrados
+
+    const contenedorPaises = document.getElementById('countries-container');//Se llama el div del html
+    contenedorPaises.innerHTML = '';//Se limpia todo
+
+    if (paises.length > 0) {//Si el tamano del nombre del pais es mayor a 0
+        paises.forEach(pais => {//Se hace el foreARCH Con el nombre del pais y el a que nos envia a pais.html
             const paisHTML = `
-            <a href="pais.html?country=${encodeURIComponent(pais.nombre.common)}" class="list-group-item list-group-item-action">
-                ${pais.nombre.common}
+            <a href="pais.html?country=${encodeURIComponent(pais.name.common)}" class="list-group-item list-group-item-action">
+                ${pais.name.common}
             </a>
         `;
-            contenedorPaises.innerHTML += paisHTML;
+            contenedorPaises.innerHTML += paisHTML;//Se anade al contenedor de paises
         });
     } else {
-        contenedorPaises.innerHTML = '<p>No se encontraron países que coincidan con la búsqueda.</p>';
+        contenedorPaises.innerHTML = '<p>No se encontraron países que coincidan con la búsqueda.</p>';//si no dira que no se encuentran paises
     }
 }
